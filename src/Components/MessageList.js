@@ -20,6 +20,10 @@ const Message = styled.li `
     &:nth-child(odd) {
         background-color: #eee;
     }
+
+    &.status {
+        text-align: center;
+    }
 `;
 
 class MessageList extends Component {
@@ -34,14 +38,11 @@ class MessageList extends Component {
                 {data.map((datum, i) => datum[0] !== '' ?
                     (
                         <Message key={i}>
-                            <strong>
-                                {datum[0]}
-                            </strong> :
-                             {datum[1]}
+                            <strong>{datum[0]}</strong>: {datum[1]}
                         </Message>
                     )
                     : (
-                        <Message key={i} className="update">
+                        <Message key={i} className="status">
                             {datum[1]}
                         </Message>
                     )

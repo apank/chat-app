@@ -8,8 +8,6 @@ import JoinForm from './Components/JoinForm';
 import MessageForm from './Components/MessageForm';
 import styled from 'styled-components';
 
-import './index.css';
-
 const MainContainer = styled.div `
     display: flex;
     flex-direction: row;
@@ -36,7 +34,7 @@ export default () => {
 
         if (id) socket.emit('join', id, room);
 
-        socket.on('message que', (username, message) => {
+        socket.on('message-que', (username, message) => {
             setMessages(draft => {
                 draft.push([username, message])
             })

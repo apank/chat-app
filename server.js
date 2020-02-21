@@ -22,18 +22,14 @@ io.on('connection', (socket) => {
 
         if (messageque.hasOwnProperty(room)) {
             for (i = 0; i < messageque[room].length; i++) {
-                io.to(room).emit('message que', messageque[room][i].username, messageque[room][i].msg);
+                io.to(room).emit('message-que', messageque[room][i].username, messageque[room][i].msg);
             }
         };
 
-        if (room == '') {
-            socket.emit('update', 'You have connected to the default room.');
-        } else {
-            socket.emit('update', `You have connected to room ${room}.`);
-            socket.emit('users-list', users[room]);
-            socket.to(room).broadcast.emit('add-user', username, socket.id);
-            socket.to(room).broadcast.emit('update', `${username} has come online.`);
-        };
+        socket.emit('update', `You have connected to the ${room == '' ? 'default' : room} room.`);
+        socket.emit('users-list', users[room]);
+        socket.to(room).broadcast.emit('add-user', username, socket.id);
+        socket.to(room).broadcast.emit('update', `${username} has come online.`);
     });
 
     socket.on('message', (msg, room) => {
