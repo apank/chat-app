@@ -1,0 +1,19 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+input:focus,
+select:focus,
+textarea:focus,
+button:focus {
+  outline: none;
+}
+body {
+  font: 16px Helvetica, Arial;
+}
+
+.update {
+  text-align: center;
+  vertical-align: middle;
+}
